@@ -12,7 +12,7 @@
 <body>
 
 	<h1>Generic Pizza Restaurant | Home</h1>
-	<p><fmt:formatDate pattern = "E, M dd, yyyy" value = "${now} }" /> </p>
+
 	<img src="https://www.publicdomainpictures.net/pictures/120000/velka/pizza-1431957490WiY.jpg" />
 	<h2>Specialty Pizzas</h2>
 	<br />

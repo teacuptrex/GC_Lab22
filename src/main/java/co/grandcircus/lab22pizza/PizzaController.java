@@ -81,23 +81,29 @@ public class PizzaController {
 	}
 	
 	@PostMapping("/confirmpizza")
-	public String confirmPizza(@RequestParam String size, @RequestParam int toppingCount, @RequestParam(required=false) boolean glutenFree, @RequestParam String specialInstructions, Model model) {
+	public String confirmPizza(@RequestParam String size, @RequestParam(required=false) boolean glutenFree,@RequestParam(required=false) String[] selected, @RequestParam(value = "selectedtopping", required = false) List<String> selectedtopping, @RequestParam String specialInstructions, Model model) {
 		//calculate total price
 		//result page should confirm info and final price
 		//include link back to homepage (on page path)
 		
 		model.addAttribute("size",size);
-		model.addAttribute("toppingCount",toppingCount);
 		model.addAttribute("specialInstructions",specialInstructions);
+		if(selectedtopping.size()<1) {
+			model.addAttribute("toppingCount", "");
+		} else {
+			model.addAttribute("toppingCount", selectedtopping.size());
+		}
+		model.addAttribute("toppings",selectedtopping);
+		model.addAttribute("selectedtopping",selectedtopping);
 		
 		double price = 0;
 		
 		if(size.equals("small")) {
-			price+=(7.0 + (toppingCount * .5));
+			price+=(7.0 + (selectedtopping.size() * .5));
 		} else if(size.equals("medium")) {
-			price+=(10.0 + (toppingCount * 1));
+			price+=(10.0 + (selectedtopping.size() * 1));
 		} else if(size.equals("large")){
-			price+=(12.0 + (toppingCount * 1.25));
+			price+=(12.0 + (selectedtopping.size() * 1.25));
 		} else {
 			
 		}

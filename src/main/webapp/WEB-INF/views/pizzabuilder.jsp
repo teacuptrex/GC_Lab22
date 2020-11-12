@@ -19,18 +19,15 @@
 				<option>medium</option>
 				<option>large</option>
 			</select><br /><br />
-		Topping Count: <input type="number" name="toppingCount" /><br /><br />
-		
-		<ul><c:forEach var="top" items="${ toppings }">
-	
-		
-			<li>${top}</li>
-		
-		
-	</c:forEach></ul>
-		
+		<c:forEach var="topping" items="${toppings}">
+			<div>
+  			<input type="checkbox" id="${topping}" name="selectedtopping">
+  			<label for="${topping}">${topping}</label>
+</div>
+		</c:forEach>
+		<br /><br />
 		Gluten-Free Crust: <input type="checkbox" name="glutenFree" /><br /><br />
-		Special Instructions: <input type="text" name="specialInstructions" /><br /><br />
+		Special Instructions: <textarea name="specialInstructions" rows=4 cols=20></textarea><br />
 	<input type="submit" /><br />
 	</form>
 	
